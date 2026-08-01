@@ -88,10 +88,12 @@ def main() -> int:
     invalid = json.loads((ROOT / "fixtures" / "invalid-transcript.json").read_text())
     accepted = analyse(valid)
     refused = analyse(invalid)
+    redacted_content = redact(valid["content"])
     assertions = [
         accepted["status"] == "success",
         accepted["external_actions_performed"] is False,
-        "[REDACTED_EMAIL]" in accepted["summary"],
+        "[REDACTED_EMAIL]" in redacted_content and "founder@example.com" not in redacted_content,
+        "[REDACTED_PHONE]" in redacted_content and "+44 7700 900123" not in redacted_content,
         bool(accepted["requirements"]),
         refused["status"] == "blocked",
         "authorised" in refused["warnings"],
