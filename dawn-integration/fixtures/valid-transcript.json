@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "meeting_id": "demo-meeting-001",
+  "source_type": "transcript",
+  "authorised": true,
+  "data_classification": "internal",
+  "redact_personal_data": true,
+  "content": "The current problem is that enquiries are handled manually and it takes too long. We need one place to track every lead and customer request. Our budget concern is whether implementation becomes expensive. The next step is a short proposal. Please send it to founder@example.com and call +44 7700 900123."
+}
