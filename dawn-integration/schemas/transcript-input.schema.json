@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://dawn.local/schemas/meeting-transcript-input-v1.json",
+  "title": "DAWN Meeting Command Transcript Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "meeting_id", "source_type", "authorised", "content"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "meeting_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{2,99}$"},
+    "source_type": {"enum": ["transcript", "audio_file_reference"]},
+    "authorised": {"const": true},
+    "content": {"type": "string", "minLength": 1, "maxLength": 200000},
+    "participants": {
+      "type": "array",
+      "maxItems": 100,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["display_name"],
+        "properties": {
+          "display_name": {"type": "string", "minLength": 1, "maxLength": 120},
+          "organisation": {"type": "string", "maxLength": 200},
+          "role": {"type": "string", "maxLength": 200}
+        }
+      }
+    },
+    "data_classification": {"enum": ["internal", "customer-confidential"]},
+    "redact_personal_data": {"type": "boolean", "default": true}
+  }
+}

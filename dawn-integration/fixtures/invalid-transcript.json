@@ -1,0 +1,7 @@
+{
+  "schema_version": 1,
+  "meeting_id": "demo-meeting-unauthorised",
+  "source_type": "transcript",
+  "authorised": false,
+  "content": "This transcript must be rejected because authority was not granted."
+}
